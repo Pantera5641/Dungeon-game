@@ -1,20 +1,17 @@
-﻿namespace ConsoleApp1
+namespace ConsoleApp1
 {
     internal class DungeonGame
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Начинается бой!");
-            
-            Random rnd = new Random();
             int HPP = 10, HPM = 20;
-            int a = rnd.Next(1, 2);
-            
+
             while (HPP >= 0 || HPM >= 0 )
             {
-                //ХП монстра: ХП игрока
-                //Лечиться Атаковать!
-                //Победа! Поражение!
+                Random rnd = new Random();
+                int a = rnd.Next(1, 3);
+
                 Console.WriteLine("ХП игрока:"+ HPP + " ХП монстра:" + HPM);
                 Console.WriteLine("Лечиться(1) или Атаковать!(2)");
                 char action = Convert.ToChar(Console.ReadLine());
@@ -46,7 +43,7 @@
                     Console.WriteLine("Monster hills on: "+ (HPM - HPMN));
                     Thread.Sleep(500);
                 }
-                else if (a == 2)
+                else 
                 {
                     int HPPN = HPP;
                     HPP = HPM - rnd.Next(4, 6);
@@ -54,17 +51,24 @@
                     Thread.Sleep(500);
                 }
 
+                if (HPM <= 0 && HPP <= 0)
+                {
+                    Console.WriteLine("Ничья");
+                    continue;  
+                }
+                else if (HPM <= 0)
+                {
+                    Console.WriteLine("Победа!");
+                    continue;
+                }
+                else if (HPP <= 0)
+                {
+                    Console.WriteLine("Поражение!");
+                    continue;
+                }
+                
                 Thread.Sleep(2000);
                 Console.Clear();
-            }
-
-            if (HPP <= 0)
-            {
-                Console.WriteLine("Победа!");
-            }
-            else if (HPP <= 0)
-            {
-                Console.WriteLine("Поражение!");
             }
         }
     }
