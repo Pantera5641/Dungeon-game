@@ -22,7 +22,7 @@ namespace ConsoleApp1
                     {
                         int HPPN = HPP;
                         HPP = HPP + rnd.Next(3, 6);
-                        Console.WriteLine("You hills on: "+ (HPP - HPPN));
+                        Console.WriteLine("Вы вылечились на: "+ (HPP - HPPN));
                         Thread.Sleep(500);
                     }
                         break;
@@ -30,7 +30,7 @@ namespace ConsoleApp1
                     {
                         int HPMN = HPM;
                         HPM = HPM - rnd.Next(9, 11);
-                        Console.WriteLine("You attacked on: "+ (HPMN - HPM));
+                        Console.WriteLine("Вы атаковали и нанесли урон равный: "+ (HPMN - HPM));
                         Thread.Sleep(500);
                     }
                         break;
@@ -40,14 +40,14 @@ namespace ConsoleApp1
                 {
                     int HPMN = HPM;
                     HPM = HPM + rnd.Next(6, 8);
-                    Console.WriteLine("Monster hills on: "+ (HPM - HPMN));
+                    Console.WriteLine("Монстр вылечился на: "+ (HPM - HPMN));
                     Thread.Sleep(500);
                 }
                 else 
                 {
                     int HPPN = HPP;
                     HPP = HPM - rnd.Next(4, 6);
-                    Console.WriteLine("Monster attacked you on: "+ (HPPN - HPP));
+                    Console.WriteLine("Монстр атаковал вас и вы получили урон: "+ (HPPN - HPP));
                     Thread.Sleep(500);
                 }
 
