@@ -2,69 +2,72 @@ namespace ConsoleApp1
 {
     internal class DungeonGame
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.WriteLine("Начинается бой!");
-            int HPP = 10, HPM = 20;
+            int hpp = 10, hpm = 20;
 
-            while (HPP >= 0 || HPM >= 0 )
+            while (true)
             {
                 Random rnd = new Random();
                 int a = rnd.Next(1, 3);
 
-                Console.WriteLine("ХП игрока:"+ HPP + " ХП монстра:" + HPM);
-                Console.WriteLine("Лечиться(1) или Атаковать!(2)");
+                Console.WriteLine("ХП игрока:"+ hpp + " ХП монстра:" + hpm);
+                Console.WriteLine("Лечиться(h) или Атаковать!(a)");
                 char action = Convert.ToChar(Console.ReadLine());
 
                 switch (action)
                 {
-                    case '1':
+                    case 'h':
                     {
-                        int HPPN = HPP;
-                        HPP = HPP + rnd.Next(3, 6);
-                        Console.WriteLine("Вы вылечились на: "+ (HPP - HPPN));
+                        int hppn = hpp;
+                        hpp = hpp + rnd.Next(3, 6);
+                        Console.WriteLine("Вы вылечились на: "+ (hpp - hppn));
                         Thread.Sleep(500);
                     }
                         break;
-                    case '2':
+                    case 'a':
                     {
-                        int HPMN = HPM;
-                        HPM = HPM - rnd.Next(9, 11);
-                        Console.WriteLine("Вы атаковали и нанесли урон равный: "+ (HPMN - HPM));
+                        int hpmn = hpm;
+                        hpm = hpm - rnd.Next(9, 11);
+                        Console.WriteLine("Вы атаковали и нанесли урон равный: "+ (hpmn - hpm));
                         Thread.Sleep(500);
                     }
                         break;
+                    default:
+                        Console.WriteLine("Ты подскользнулся и сломал шею!");
+                        return;
                 }
                 
                 if (a == 1)
                 {
-                    int HPMN = HPM;
-                    HPM = HPM + rnd.Next(6, 8);
-                    Console.WriteLine("Монстр вылечился на: "+ (HPM - HPMN));
+                    int hpmn = hpm;
+                    hpm = hpm + rnd.Next(6, 8);
+                    Console.WriteLine("Монстр вылечился на: "+ (hpm - hpmn));
                     Thread.Sleep(500);
                 }
                 else 
                 {
-                    int HPPN = HPP;
-                    HPP = HPM - rnd.Next(4, 6);
-                    Console.WriteLine("Монстр атаковал вас и вы получили урон: "+ (HPPN - HPP));
+                    int hppn = hpp;
+                    hpp = hpp - rnd.Next(4, 6);
+                    Console.WriteLine("Монстр атаковал вас и вы получили урон: "+ (hppn - hpp));
                     Thread.Sleep(500);
                 }
 
-                if (HPM <= 0 && HPP <= 0)
+                if (hpm <= 0 && hpp <= 0)
                 {
                     Console.WriteLine("Ничья");
-                    continue;  
+                    break;  
                 }
-                else if (HPM <= 0)
+                else if (hpm <= 0)
                 {
                     Console.WriteLine("Победа!");
-                    continue;
+                    break;
                 }
-                else if (HPP <= 0)
+                else if (hpp <= 0)
                 {
                     Console.WriteLine("Поражение!");
-                    continue;
+                    break;
                 }
                 
                 Thread.Sleep(2000);
