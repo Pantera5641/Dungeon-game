@@ -59,12 +59,14 @@ namespace ConsoleApp1
                     Console.WriteLine("Ничья");
                     break;  
                 }
-                else if (hpm <= 0)
+                
+                if (hpm <= 0)
                 {
                     Console.WriteLine("Победа!");
                     break;
                 }
-                else if (hpp <= 0)
+                
+                if (hpp <= 0)
                 {
                     Console.WriteLine("Поражение!");
                     break;
